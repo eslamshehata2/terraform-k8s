@@ -1,9 +1,14 @@
 resource "kubernetes_ingress_v1" "ingress" {
   wait_for_load_balancer = true
   metadata {
-    name = "simple-ingress"
-  }
+    name        = "simple-ingress"
+    annotations = {
+       #"nginx.ingress.kubernetes.io/force-ssl-redirect" = "true"
+       #"kubernetes.io/ingress.class" = "nginx"
 
+      #More annotation##
+    }
+  }
   spec {
     ingress_class_name = "nginx"
 
